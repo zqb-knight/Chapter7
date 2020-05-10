@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
     private SurfaceView surfaceView;
     private MediaPlayer player;
     private SurfaceHolder holder;
-    private SeekBar Bar;
-    private TextView currentTime;
-    private TextView textAll;
+    private SeekBar Bar;               //进度条
+    private TextView currentTime;     //当前播放时间
+    private TextView textAll;         //视频总时间
     private int length;
-    private Timer myTimer;     //定时刷新进度条
-    private TimerTask myTask;  //定时器任务
+    private Timer myTimer;          //定时刷新进度条
+    private TimerTask myTask;           //定时器任务
     private boolean isChanging = false;    //互斥变量，防止定时器与seekbar滑动冲突
     //计时器进程提醒主线程更新ui
     Handler mHandler = new Handler() {
@@ -67,10 +67,11 @@ public class MainActivity extends AppCompatActivity {
             Uri uri = intent.getData();
             String str = Uri.decode(uri.getEncodedPath());}
         setTitle("MediaPlayer");
-        if(MainActivity.this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if(MainActivity.this.getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_LANDSCAPE){
             getSupportActionBar().hide();
-
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_main);
         surfaceView = findViewById(R.id.surfaceView);
